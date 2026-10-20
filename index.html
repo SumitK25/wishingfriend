@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#fdf0f1">
 <title>Happy Birthday, Ma'am</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -14,358 +13,86 @@
 <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Amita:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
-
 <style>
 :root {
-  --bg: #fdf0f1;
-  --card: #fffaf2;
-  --ink: #4a2b33;
-  --soft: #8a6a72;
-  --rose: #d9566f;
-  --wax: #b8324a;
-  --line: #f0cfd5;
-  --conf: #f6cdd7;
-  color-scheme: light;
-  box-sizing: border-box;
-  padding-top: env(safe-area-inset-top, 0px);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg:#fdf0f1; --card:#fffaf2; --ink:#4a2b33; --soft:#8a6a72;
+  --rose:#d9566f; --wax:#b8324a; --line:#f0cfd5; --conf:#f6cdd7;
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
 }
-
 :root[data-theme="dark"] {
-  --bg: #2a1a20;
-  --card: #3a252d;
-  --ink: #fbe9ec;
-  --soft: #d3aab3;
-  --rose: #f08098;
-  --wax: #d9566f;
-  --line: #5a3a45;
-  --conf: #5a3040;
-  color-scheme: dark;
+  --bg:#2a1a20; --card:#3a252d; --ink:#fbe9ec; --soft:#d3aab3;
+  --rose:#f08098; --wax:#d9566f; --line:#5a3a45; --conf:#5a3040;
+  color-scheme:dark;
 }
-
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme:dark) {
   :root:not([data-theme="light"]) {
-    --bg: #2a1a20;
-    --card: #3a252d;
-    --ink: #fbe9ec;
-    --soft: #d3aab3;
-    --rose: #f08098;
-    --wax: #d9566f;
-    --line: #5a3a45;
-    --conf: #5a3040;
-    color-scheme: dark;
+    --bg:#2a1a20; --card:#3a252d; --ink:#fbe9ec; --soft:#d3aab3;
+    --rose:#f08098; --wax:#d9566f; --line:#5a3a45; --conf:#5a3040;
+    color-scheme:dark;
   }
 }
-
-* { box-sizing: border-box; }
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: env(safe-area-inset-top, 0px);
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  min-height: 100dvh;
-  background: radial-gradient(circle at 20% 10%, var(--line), transparent 45%), var(--bg);
-  color: var(--ink);
-  font-family: Fraunces, "Tiro Devanagari Hindi", Georgia, serif;
-  display: flex;
-  justify-content: center;
-  -webkit-tap-highlight-color: transparent;
-}
-
-button { font: inherit; cursor: pointer; touch-action: manipulation; }
-button:focus-visible { outline: 3px solid var(--rose); outline-offset: 3px; }
-
-main {
-  width: 100%;
-  max-width: 440px;
-  padding: 28px 20px calc(40px + env(safe-area-inset-bottom, 0px));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.stage {
-  display: none;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.stage.on {
-  display: flex;
-  animation: stageIn .6s ease both;
-}
-
-@keyframes stageIn {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-h1, h2 { font-weight: 600; margin: 0; }
-.script { font-family: Caveat, Kalam, "Segoe Script", cursive; color: var(--rose); font-weight: 700; }
-.hint { color: var(--soft); font-size: .9rem; line-height: 1.5; margin: 6px 0 0; }
-.btn {
-  background: var(--rose);
-  color: #fff;
-  padding: 13px 26px;
-  border-radius: 999px;
-  font-weight: 600;
-  margin-top: 22px;
-  box-shadow: 0 8px 20px -8px var(--rose);
-  border: 0;
-  min-height: 46px;
-}
-.btn:active { transform: scale(.98); }
-
-.card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  padding: 26px 22px;
-  width: 100%;
-  box-shadow: 0 18px 40px -22px var(--wax);
-}
-
-/* Countdown */
-.cd {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  width: 100%;
-  margin: 24px 0 8px;
-}
-.cd div {
-  min-width: 0;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 14px 2px;
-}
-.cd b {
-  display: block;
-  font-size: clamp(1.35rem, 6vw, 1.9rem);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-}
-.cd span {
-  font-size: .7rem;
-  color: var(--soft);
-  text-transform: uppercase;
-  letter-spacing: .08em;
-}
-
-/* Envelope */
-.env {
-  position: relative;
-  width: min(300px, 82vw);
-  aspect-ratio: 3 / 2;
-  margin: 34px 0 14px;
-  background: none;
-  padding: 0;
-  border: 0;
-  perspective: 700px;
-}
-.env .body {
-  position: absolute;
-  inset: 0;
-  background: #f6e3c8;
-  border-radius: 8px;
-  border: 1px solid #d9b98d;
-}
-.env .flap {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 62%;
-  background: #efd5b0;
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  border-radius: 8px 8px 0 0;
-  transform-origin: top center;
-  transition: transform .8s ease;
-  backface-visibility: hidden;
-}
-.env .seal {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 62px;
-  height: 62px;
-  margin: -31px 0 0 -31px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #e0566e, var(--wax));
-  display: grid;
-  place-items: center;
-  color: #ffe3e8;
-  font-size: 1.6rem;
-  box-shadow: 0 6px 12px -4px #0006;
-  transition: opacity .4s;
-}
-.env.open .flap { transform: rotateX(180deg); }
-.env.open .seal { opacity: 0; }
-
-.bear { font-size: 3rem; animation: bob 2.4s ease-in-out infinite; }
-@keyframes bob { 50% { transform: translateY(-8px); } }
-
-/* Album */
-.photo {
-  aspect-ratio: 4 / 5;
-  width: 100%;
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  font-size: 5rem;
-  background: linear-gradient(145deg, #ffe0e6, #ffd0b8);
-  border: 6px solid #fff;
-  box-shadow: 0 10px 24px -14px #0008;
-}
-.cap { font-family: Caveat, cursive; font-size: 1.45rem; line-height: 1.35; margin: 12px 0 0; min-height: 2.6em; }
-.nav { display: flex; gap: 18px; align-items: center; margin-top: 8px; }
-.nav button {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--card);
-  color: var(--rose);
-  border: 1px solid var(--line);
-  font-size: 1.2rem;
-}
-.dots { color: var(--soft); font-size: .85rem; min-width: 48px; }
-
-/* Wishes */
-.flowers { display: flex; gap: 14px; margin: 26px 0 12px; }
-.fl {
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
-  background: var(--card);
-  border: 1px solid var(--line);
-  font-size: 2.6rem;
-  display: grid;
-  place-items: center;
-  transition: transform .3s, opacity .3s;
-}
-.fl:active { transform: scale(.96); }
-.fl.done { opacity: .55; }
-.wish {
-  min-height: 150px;
-  display: grid;
-  place-items: center;
-  font-family: Caveat, cursive;
-  font-size: 1.5rem;
-  line-height: 1.45;
-}
-
-/* Letter and confession */
-.letter {
-  text-align: left;
-  line-height: 1.95;
-  font-size: 1.05rem;
-  font-family: "Tiro Devanagari Hindi", Fraunces, serif;
-  overflow-wrap: anywhere;
-}
-.letter p { margin: 0 0 14px; }
-.letter .poem {
-  border-left: 3px solid var(--rose);
-  padding: 4px 0 4px 14px;
-  color: var(--rose);
-  line-height: 2;
-}
-.sign { font-size: 1.8rem; text-align: right; margin: 6px 0 0; }
-[hidden] { display: none !important; }
-
-.secret {
-  display: block;
-  width: 100%;
-  margin: 26px 0 4px;
-  padding: 16px 18px;
-  border: 2px dashed var(--rose);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--rose);
-  font-family: inherit;
-  font-size: 1.05rem;
-}
-.conf {
-  background: var(--conf);
-  border-radius: 18px;
-  padding: 22px 20px;
-  margin-top: 22px;
-  animation: stageIn .6s ease both;
-}
-.conf:focus { outline: 2px solid var(--rose); outline-offset: 3px; }
-.conf h3 {
-  margin: 0 0 14px;
-  font-size: 1.9rem;
-  font-weight: 400;
-  font-family: "Yatra One", Kalam, cursive;
-  color: var(--rose);
-}
-.conf p {
-  margin: 0 0 14px;
-  line-height: 1.95;
-  font-size: 1.12rem;
-  font-family: Amita, "Tiro Devanagari Hindi", Kalam, serif;
-}
-.conf .sig {
-  margin: 6px 0 0;
-  text-align: right;
-  font-size: 1.4rem;
-  font-weight: 700;
-  font-family: Kalam, Caveat, cursive;
-}
-.pet {
-  position: fixed;
-  z-index: 10;
-  pointer-events: none;
-  font-size: 1.4rem;
-  animation: fall 3.4s linear forwards;
-}
-@keyframes fall {
-  to { transform: translateY(110vh) rotate(260deg); opacity: .2; }
-}
-
-@media (max-width: 360px) {
-  main { padding-left: 14px; padding-right: 14px; }
-  .cd { gap: 6px; }
-  .cd div { padding: 12px 1px; }
-  .cd span { font-size: .62rem; letter-spacing: .04em; }
-  .flowers { gap: 9px; }
-  .fl { width: 76px; height: 76px; }
-  .letter { font-size: 1rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-  }
-  .bear { animation: none; }
-}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;min-height:100vh;min-height:100dvh;background:radial-gradient(circle at 20% 10%,var(--line),transparent 45%),var(--bg);color:var(--ink);font-family:Fraunces,"Tiro Devanagari Hindi",Georgia,serif;display:flex;justify-content:center;-webkit-tap-highlight-color:transparent}
+button{font:inherit;cursor:pointer;touch-action:manipulation}
+button:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+main{width:100%;max-width:440px;padding:28px 20px calc(40px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:center}
+.stage{display:none;width:100%;flex-direction:column;align-items:center;text-align:center}
+.stage.on{display:flex;animation:stageIn .6s ease both}
+@keyframes stageIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+h1,h2{font-weight:600;margin:0}
+.script{font-family:Caveat,Kalam,"Segoe Script",cursive;color:var(--rose);font-weight:700}
+.hint{color:var(--soft);font-size:.9rem;line-height:1.5;margin:6px 0 0}
+.btn{background:var(--rose);color:#fff;padding:13px 26px;border-radius:999px;font-weight:600;margin-top:22px;box-shadow:0 8px 20px -8px var(--rose);border:0;min-height:46px}
+.btn:active{transform:scale(.98)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 22px;width:100%;box-shadow:0 18px 40px -22px var(--wax)}
+.cd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:100%;margin:24px 0 8px}
+.cd div{min-width:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 2px}
+.cd b{display:block;font-size:clamp(1.35rem,6vw,1.9rem);font-weight:600;font-variant-numeric:tabular-nums}
+.cd span{font-size:.7rem;color:var(--soft);text-transform:uppercase;letter-spacing:.08em}
+.env{position:relative;width:min(300px,82vw);aspect-ratio:3/2;margin:34px 0 14px;background:none;padding:0;border:0;perspective:700px}
+.env .body{position:absolute;inset:0;background:#f6e3c8;border-radius:8px;border:1px solid #d9b98d}
+.env .flap{position:absolute;left:0;right:0;top:0;height:62%;background:#efd5b0;clip-path:polygon(0 0,100% 0,50% 100%);border-radius:8px 8px 0 0;transform-origin:top center;transition:transform .8s ease;backface-visibility:hidden}
+.env .seal{position:absolute;left:50%;top:50%;width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e0566e,var(--wax));display:grid;place-items:center;color:#ffe3e8;font-size:1.6rem;box-shadow:0 6px 12px -4px #0006;transition:opacity .4s}
+.env.open .flap{transform:rotateX(180deg)}.env.open .seal{opacity:0}
+.bear{font-size:3rem;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.photo{aspect-ratio:4/5;width:100%;border-radius:16px;display:block;object-fit:cover;object-position:center;background:linear-gradient(145deg,#ffe0e6,#ffd0b8);border:6px solid #fff;box-shadow:0 10px 24px -14px #0008}
+.cap{font-family:Caveat,cursive;font-size:1.45rem;line-height:1.35;margin:12px 0 0;min-height:2.6em}
+.nav{display:flex;gap:18px;align-items:center;margin-top:8px}
+.nav button{width:44px;height:44px;border-radius:50%;background:var(--card);color:var(--rose);border:1px solid var(--line);font-size:1.2rem}
+.dots{color:var(--soft);font-size:.85rem;min-width:48px}
+.flowers{display:flex;gap:14px;margin:26px 0 12px}
+.fl{width:84px;height:84px;border-radius:50%;background:var(--card);border:1px solid var(--line);font-size:2.6rem;display:grid;place-items:center;transition:transform .3s,opacity .3s}
+.fl:active{transform:scale(.96)}.fl.done{opacity:.55}
+.wish{min-height:150px;display:grid;place-items:center;font-family:Caveat,cursive;font-size:1.5rem;line-height:1.45}
+.letter{text-align:left;line-height:1.95;font-size:1.05rem;font-family:"Tiro Devanagari Hindi",Fraunces,serif;overflow-wrap:anywhere}
+.letter p{margin:0 0 14px}
+.letter .poem{border-left:3px solid var(--rose);padding:4px 0 4px 14px;color:var(--rose);line-height:2}
+.sign{font-size:1.8rem;text-align:right;margin:6px 0 0}
+[hidden]{display:none!important}
+.secret{display:block;width:100%;margin:26px 0 4px;padding:16px 18px;border:2px dashed var(--rose);border-radius:999px;background:transparent;color:var(--rose);font-family:inherit;font-size:1.05rem}
+.conf{background:var(--conf);border-radius:18px;padding:22px 20px;margin-top:22px;animation:stageIn .6s ease both}
+.conf:focus{outline:2px solid var(--rose);outline-offset:3px}
+.conf h3{margin:0 0 14px;font-size:1.9rem;font-weight:400;font-family:"Yatra One",Kalam,cursive;color:var(--rose)}
+.conf p{margin:0 0 14px;line-height:1.95;font-size:1.12rem;font-family:Amita,"Tiro Devanagari Hindi",Kalam,serif}
+.conf .sig{margin:6px 0 0;text-align:right;font-size:1.4rem;font-weight:700;font-family:Kalam,Caveat,cursive}
+.pet{position:fixed;z-index:10;pointer-events:none;font-size:1.4rem;animation:fall 3.4s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(260deg);opacity:.2}}
+@media(max-width:360px){main{padding-left:14px;padding-right:14px}.cd{gap:6px}.cd div{padding:12px 1px}.cd span{font-size:.62rem;letter-spacing:.04em}.flowers{gap:9px}.fl{width:76px;height:76px}.letter{font-size:1rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.bear{animation:none}}
 </style>
 </head>
-
 <body>
 <main>
   <section class="stage on" id="lock" aria-labelledby="lock-title">
     <div style="font-size:3rem" aria-hidden="true">🎁</div>
     <h1 id="lock-title" style="font-size:1.9rem;margin-top:10px">A little surprise is waiting</h1>
     <p class="script" style="font-size:1.6rem;margin:6px 0 0">opens on 20 October 2026, 12:00 AM</p>
-
     <div class="cd" role="timer" aria-label="Time left until the surprise opens">
-      <div><b id="cd-d">--</b><span>Days</span></div>
-      <div><b id="cd-h">--</b><span>Hours</span></div>
-      <div><b id="cd-m">--</b><span>Mins</span></div>
-      <div><b id="cd-s">--</b><span>Secs</span></div>
+      <div><b id="cd-d">--</b><span>Days</span></div><div><b id="cd-h">--</b><span>Hours</span></div><div><b id="cd-m">--</b><span>Mins</span></div><div><b id="cd-s">--</b><span>Secs</span></div>
     </div>
     <p class="hint" id="lkmsg" aria-live="polite">Starting the clock…</p>
     <p class="hint" id="dbg" hidden></p>
@@ -377,11 +104,7 @@ h1, h2 { font-weight: 600; margin: 0; }
     <h1 style="font-size:2.1rem;margin-top:8px">Hello, Akta</h1>
     <div class="script" style="font-size:1.8rem">happy birthday ♡</div>
     <div class="bear" aria-hidden="true">🧸</div>
-    <button class="env" id="env" type="button" aria-label="Open the envelope">
-      <span class="body" aria-hidden="true"></span>
-      <span class="flap" aria-hidden="true"></span>
-      <span class="seal" aria-hidden="true">♥</span>
-    </button>
+    <button class="env" id="env" type="button" aria-label="Open the envelope"><span class="body" aria-hidden="true"></span><span class="flap" aria-hidden="true"></span><span class="seal" aria-hidden="true">♥</span></button>
     <p class="hint">tap the seal to open</p>
   </section>
 
@@ -399,17 +122,13 @@ h1, h2 { font-weight: 600; margin: 0; }
   </section>
 
   <section class="stage" id="s2">
-    <h2 style="font-size:1.6rem">Some cool album for you</h2>
-    <p class="hint" style="margin-bottom:16px">a few of my favourite moments with you ♡</p>
+    <h2 style="font-size:1.6rem">Some beautiful memories</h2>
+    <p class="hint" style="margin-bottom:16px">a few moments worth keeping close ♡</p>
     <div class="card" style="padding:16px">
-      <div class="photo" id="ph" role="img" aria-label="Album illustration">📸</div>
+      <img class="photo" id="ph" src="images/akta-1.jpeg" alt="Akta Ma'am — memory 1">
       <p class="cap" id="cap"></p>
     </div>
-    <div class="nav">
-      <button id="prev" type="button" aria-label="Previous memory">←</button>
-      <span class="dots" id="dots" aria-live="polite"></span>
-      <button id="next" type="button" aria-label="Next memory">→</button>
-    </div>
+    <div class="nav"><button id="prev" type="button" aria-label="Previous photo">←</button><span class="dots" id="dots" aria-live="polite"></span><button id="next" type="button" aria-label="Next photo">→</button></div>
     <button class="btn" type="button" data-go="3">Open your wishes</button>
   </section>
 
@@ -417,9 +136,9 @@ h1, h2 { font-weight: 600; margin: 0; }
     <h2 style="font-size:1.6rem">A tiny bouquet of birthday wishes</h2>
     <p class="hint">pick each flower, there's a little wish inside ♡</p>
     <div class="flowers">
-      <button class="fl" type="button" data-w="0" aria-label="Pink flower">🌸</button>
-      <button class="fl" type="button" data-w="1" aria-label="Sunflower">🌻</button>
-      <button class="fl" type="button" data-w="2" aria-label="Tulip">🌷</button>
+      <button class="fl" type="button" data-w="0" aria-label="Pink flower" aria-pressed="false">🌸</button>
+      <button class="fl" type="button" data-w="1" aria-label="Sunflower" aria-pressed="false">🌻</button>
+      <button class="fl" type="button" data-w="2" aria-label="Tulip" aria-pressed="false">🌷</button>
     </div>
     <div class="card wish" id="wish" aria-live="polite">tap a flower</div>
     <button class="btn" type="button" id="toLetter" data-go="4" hidden>Read my letter</button>
@@ -440,94 +159,54 @@ h1, h2 { font-weight: 600; margin: 0; }
       जन्मदिन बहुत मुबारक हो Ma'am, आप सदा बेमिसाल रहें,<br>
       आप हँसती रहें खिलखिलाकर, आपका हर एक साल कमाल रहे!</p>
       <p>आज आपका जन्मदिन है। ज़्यादा कुछ नहीं कहूँगा, बस इतना: ईश्वर पर भरोसा रखिएगा। आप हर वो चीज़ हासिल करें जो चाहें, और आपकी wish list की हर ख़ुशी आपको मिले।</p>
-      <p>और जिस दिन हम पहली बार मिलें, उस दिन लगे कि हम तो हमेशा से साथ थे, बस आज आमने-सामने आए हैं।</p>
       <p class="script sign">Happy Birthday, Akta ♡<br>with love</p>
 
-      <button class="secret" id="secret" type="button" aria-expanded="false" aria-controls="conf">💌 Something I've never confessed…</button>
-      <div class="conf" id="conf" tabindex="-1" hidden lang="hi">
-        <h3 class="script">एक छोटी-सी दिल की बात 🤍</h3>
-        <p>Ma’am, एक बात है जो आपसे कहनी थी, पर कभी कह नहीं पाया। इसलिए सोचा, आपके जन्मदिन पर कह ही दूँ।</p>
-        <p>सच कहूँ तो, आप मुझे बहुत अच्छी लगती हैं। आपकी बातें, आपकी मुस्कान और आपसे बात करना, सब कुछ अच्छा लगता है। ❤️</p>
-        <p>पता नहीं कब आपकी आदत-सी हो गई, लेकिन जिस दिन हमारी बात नहीं होती, उस दिन कुछ अजीब-सा लगता है। मन करता है कि आपसे बात हो जाए। कभी-कभी तो लगता है कि मैं आपको लेकर थोड़ा possessive होने लगा हूँ। 🫣</p>
-        <p>मुझे नहीं पता आप मेरे बारे में क्या सोचती हैं, लेकिन मैं हमेशा आपके साथ रहना चाहता हूँ, आपकी इज़्ज़त करना चाहता हूँ और हर परिस्थिति में आपका साथ देना चाहता हूँ।</p>
-        <p>सच कहूँ तो, अभी मैं भी अपनी ज़िंदगी में struggle कर रहा हूँ और सब कुछ हासिल करना बाकी है। लेकिन अगर आपका साथ मिला, तो मेरी ख़्वाहिश है कि हम दोनों एक-दूसरे को समझते हुए, मुश्किल वक़्त में एक-दूसरे का हौसला बनकर, साथ में struggle करें और साथ में grow करें। मेरे लिए साथ होने का मतलब सिर्फ़ ख़ुशियाँ बाँटना नहीं, बल्कि बुरे वक़्त में भी एक-दूसरे का साथ देकर बेहतर इंसान बनना है। ✨</p>
-        <p>मैं आपसे किसी जवाब की उम्मीद नहीं कर रहा, बस अपने मन की बात आपसे शेयर करना चाहता हूँ। आपकी ख़ुशी और आपके फ़ैसले मेरे लिए हमेशा मायने रखेंगे। हमारी दोस्ती मेरे लिए बहुत ख़ास है, और मैं हमेशा इसकी इज़्ज़त करूँगा। 🌸</p>
-        <p class="script sig">जन्मदिन मुबारक हो, Akta Ji! 🎂💗</p>
-      </div>
     </div>
     <button class="btn" id="again" type="button">Open it again</button>
   </section>
 </main>
-
 <script>
 (function () {
   'use strict';
-
   var TARGET_TIME = new Date('2026-10-20T00:00:00+05:30').getTime();
   var countdownTimer = null;
   var $ = function (id) { return document.getElementById(id); };
 
-  function pad(value) {
-    return String(value).padStart(2, '0');
+  function pad(value) { return String(value).padStart(2, '0'); }
+  function reducedMotion() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
-
   function showStage(number) {
-    var stages = document.querySelectorAll('.stage[id^="s"]');
-
-    stages.forEach(function (stage) {
+    document.querySelectorAll('.stage[id^="s"]').forEach(function (stage) {
       stage.classList.toggle('on', stage.id === 's' + number);
     });
-
     window.scrollTo({ top: 0, behavior: reducedMotion() ? 'auto' : 'smooth' });
-
     if (number === 1 || number === 4) makePetals();
   }
-
-  function reducedMotion() {
-    return window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  }
-
   function unlock() {
     if (countdownTimer !== null) {
       window.clearInterval(countdownTimer);
       countdownTimer = null;
     }
-
-    var lock = $('lock');
-    var welcome = $('s0');
-
-    if (lock) lock.classList.remove('on');
-    if (welcome) welcome.classList.add('on');
+    if ($('lock')) $('lock').classList.remove('on');
+    if ($('s0')) $('s0').classList.add('on');
   }
-
   function tickCountdown() {
     var remaining = TARGET_TIME - Date.now();
-
     if (remaining <= 0 || window.location.hash === '#preview') {
       unlock();
       return;
     }
-
     var totalSeconds = Math.floor(remaining / 1000);
-    var days = Math.floor(totalSeconds / 86400);
-    var hours = Math.floor((totalSeconds % 86400) / 3600);
-    var minutes = Math.floor((totalSeconds % 3600) / 60);
-    var seconds = totalSeconds % 60;
-
-    if ($('cd-d')) $('cd-d').textContent = String(days);
-    if ($('cd-h')) $('cd-h').textContent = pad(hours);
-    if ($('cd-m')) $('cd-m').textContent = pad(minutes);
-    if ($('cd-s')) $('cd-s').textContent = pad(seconds);
-
+    if ($('cd-d')) $('cd-d').textContent = String(Math.floor(totalSeconds / 86400));
+    if ($('cd-h')) $('cd-h').textContent = pad(Math.floor((totalSeconds % 86400) / 3600));
+    if ($('cd-m')) $('cd-m').textContent = pad(Math.floor((totalSeconds % 3600) / 60));
+    if ($('cd-s')) $('cd-s').textContent = pad(totalSeconds % 60);
     if ($('lkmsg')) $('lkmsg').textContent = 'come back when the clock hits zero ♡';
   }
-
   function makePetals() {
     if (reducedMotion()) return;
-
     var symbols = ['🌸', '💗', '✨', '🌷'];
-
     for (var i = 0; i < 12; i++) {
       var petal = document.createElement('span');
       petal.className = 'pet';
@@ -537,40 +216,31 @@ h1, h2 { font-weight: 600; margin: 0; }
       petal.style.top = '-30px';
       petal.style.animationDelay = (Math.random() * 1.2) + 's';
       document.body.appendChild(petal);
-
       window.setTimeout(function (node) {
         if (node && node.parentNode) node.parentNode.removeChild(node);
       }, 5000, petal);
     }
   }
-
   function init() {
     try {
       var debug = $('dbg');
-
       window.addEventListener('error', function (event) {
         if (debug) {
           debug.hidden = false;
           debug.textContent = 'Countdown error: ' + (event.message || 'Unknown script error');
         }
       });
-
-      if (window.location.hash === '#preview' || Date.now() >= TARGET_TIME) {
-        unlock();
-      } else {
+      if (window.location.hash === '#preview' || Date.now() >= TARGET_TIME) unlock();
+      else {
         tickCountdown();
         countdownTimer = window.setInterval(tickCountdown, 1000);
       }
 
       var envelope = $('env');
-      if (envelope) {
-        envelope.addEventListener('click', function () {
-          envelope.classList.add('open');
-          window.setTimeout(function () {
-            showStage(1);
-          }, reducedMotion() ? 0 : 900);
-        });
-      }
+      if (envelope) envelope.addEventListener('click', function () {
+        envelope.classList.add('open');
+        window.setTimeout(function () { showStage(1); }, reducedMotion() ? 0 : 900);
+      });
 
       document.querySelectorAll('[data-go]').forEach(function (button) {
         button.addEventListener('click', function () {
@@ -579,35 +249,28 @@ h1, h2 { font-weight: 600; margin: 0; }
       });
 
       var memories = [
-        ['📸', 'Every moment with you turns into a memory.'],
-        ['🎂', 'Cake, candles, and you in the middle of it all.'],
-        ['🌅', 'Quiet days that somehow felt like the best ones.'],
-        ['☕', 'All the long talks, one cup at a time.'],
-        ['💗', 'Thank you for showing up, for everything, every time.']
+        { src: 'images/akta-1.jpeg', caption: 'A beautiful moment, made even more special by you. ♡', alt: "Akta Ma'am standing beside a tree" },
+        { src: 'images/akta-2.jpeg', caption: 'Some memories deserve a place of their own. ✨', alt: "Akta Ma'am in her blazer under festive lights" },
+        { src: 'images/akta-3.jpeg', caption: 'A little frame for a moment worth remembering. 💗', alt: "Akta Ma'am — birthday album photo three" }
       ];
-
       var memoryIndex = 0;
-
       function renderMemory() {
-        if ($('ph')) $('ph').textContent = memories[memoryIndex][0];
-        if ($('cap')) $('cap').textContent = memories[memoryIndex][1];
+        var photo = $('ph');
+        if (photo) {
+          photo.src = memories[memoryIndex].src;
+          photo.alt = memories[memoryIndex].alt;
+        }
+        if ($('cap')) $('cap').textContent = memories[memoryIndex].caption;
         if ($('dots')) $('dots').textContent = (memoryIndex + 1) + ' / ' + memories.length;
       }
-
-      if ($('prev')) {
-        $('prev').addEventListener('click', function () {
-          memoryIndex = (memoryIndex + memories.length - 1) % memories.length;
-          renderMemory();
-        });
-      }
-
-      if ($('next')) {
-        $('next').addEventListener('click', function () {
-          memoryIndex = (memoryIndex + 1) % memories.length;
-          renderMemory();
-        });
-      }
-
+      if ($('prev')) $('prev').addEventListener('click', function () {
+        memoryIndex = (memoryIndex + memories.length - 1) % memories.length;
+        renderMemory();
+      });
+      if ($('next')) $('next').addEventListener('click', function () {
+        memoryIndex = (memoryIndex + 1) % memories.length;
+        renderMemory();
+      });
       renderMemory();
 
       var wishes = [
@@ -615,55 +278,23 @@ h1, h2 { font-weight: 600; margin: 0; }
         'You remember the small things, the worry from a Tuesday, the text on a hard day. I wish you to be seen the same way, every day.',
         'May every plan you make this year work out, and the ones that don’t turn into better stories.'
       ];
-
       var seen = Object.create(null);
-
       document.querySelectorAll('.fl').forEach(function (button) {
         button.addEventListener('click', function () {
           var wishIndex = Number(button.getAttribute('data-w'));
-
           if ($('wish')) $('wish').textContent = wishes[wishIndex];
           button.classList.add('done');
           button.setAttribute('aria-pressed', 'true');
           seen[wishIndex] = true;
-
-          if (Object.keys(seen).length === wishes.length && $('toLetter')) {
-            $('toLetter').hidden = false;
-          }
+          if (Object.keys(seen).length === wishes.length && $('toLetter')) $('toLetter').hidden = false;
         });
       });
 
-      var secretButton = $('secret');
-      var confession = $('conf');
-
-      if (secretButton && confession) {
-        secretButton.addEventListener('click', function () {
-          secretButton.hidden = true;
-          secretButton.setAttribute('aria-expanded', 'true');
-          confession.hidden = false;
-          confession.focus({ preventScroll: true });
-
-          confession.scrollIntoView({
-            behavior: reducedMotion() ? 'auto' : 'smooth',
-            block: 'center'
-          });
-        });
-      }
-
       var againButton = $('again');
-      if (againButton) {
-        againButton.addEventListener('click', function () {
-          if (secretButton && confession) {
-            secretButton.hidden = false;
-            secretButton.setAttribute('aria-expanded', 'false');
-            confession.hidden = true;
-          }
-
-          if ($('env')) $('env').classList.remove('open');
-          showStage(0);
-        });
-      }
-
+      if (againButton) againButton.addEventListener('click', function () {
+        if ($('env')) $('env').classList.remove('open');
+        showStage(0);
+      });
     } catch (error) {
       var message = $('lkmsg');
       if (message) message.textContent = 'Something went wrong: ' + error.message;
@@ -674,13 +305,8 @@ h1, h2 { font-weight: 600; margin: 0; }
       }
     }
   }
-
-  /* Works whether this script runs before or after DOMContentLoaded. */
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+  else init();
 })();
 </script>
 </body>
